@@ -3,11 +3,13 @@ import { promisified } from "tauri/api/tauri";
 import "./App.css";
 
 function App() {
-    const [inputValue, setInputValue] = useState("");
-    const echoInput = () =>
+    const cmd = "runCommand"
+    const [command, setCommand] = useState("");
+    const [args, setArgs] = useState("");
+    const execute = () =>
         promisified({
-            cmd: "runCommand",
-            args: ['command', 'option', inputValue],
+            cmd,
+            command: `${command} ${args}`,
         })
             .then(({ value, message }: any) => console.log({ value, message }))
             .catch((err) => console.log(err));
@@ -17,10 +19,15 @@ function App() {
             <header className="App-header">
                 <input
                     type="text"
-                    value={inputValue}
-                    onChange={({ target: { value } }) => setInputValue(value)}
+                    value={command}
+                    onChange={({ target: { value } }) => setCommand(value)}
                 ></input>
-                <button onClick={echoInput}>Echo</button>
+                <input
+                    type="text"
+                    value={args}
+                    onChange={({ target: { value } }) => setArgs(value)}
+                ></input>
+                <button onClick={execute}>Execute</button>
             </header>
         </div>
     );
