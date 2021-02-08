@@ -1,11 +1,11 @@
 [package]
-name = "cloudhelper"
+name = "cli-wrapper-ui"
 version = "0.1.0"
-description = "A Tauri App"
-authors = [ "you" ]
-license = ""
-repository = ""
-default-run = "cloudhelper"
+description = "Experimental way to wrap generic UI around some helper scripts"
+authors = [ "Chris Czach" ]
+license = "MIT"
+repository = "https://github.com/chrisczach/cli-wrapper-ui"
+default-run = "cli-wrapper-ui"
 edition = "2018"
 build = "src/build.rs"
 
@@ -22,5 +22,12 @@ embedded-server = [ "tauri/embedded-server" ]
 no-server = [ "tauri/no-server" ]
 
 [[bin]]
-name = "cloudhelper"
+name = "cli-wrapper-ui"
 path = "src/main.rs"
+
+[profile.release]
+panic = "abort"
+codegen-units = 1
+lto = true
+incremental = false
+opt-level = "z"

@@ -19,19 +19,13 @@
     "tauri": "^0.14.1"
   },
   "scripts": {
-    "dev": "run-p dev-react dev-tauri",
-    "dev-react": "BROWSER=none react-scripts start",
-    "dev-tauri": "tauri dev",
-    "tauri": "tauri",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "tauri dev",
+    "build": "tauri build",
+    "tauri": "tauri"
   },
   "eslintConfig": {
     "extends": [
-      "react-app",
-      "react-app/jest"
+      "react-app"
     ]
   },
   "browserslist": {

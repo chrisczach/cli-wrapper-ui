@@ -16,9 +16,9 @@ fn main() {
         Ok(command) => {
           match command {
             // definitions for your custom commands from Cmd here
-            MyCustomCommand { argument } => {
+            RunCommand { args } => {
               //  your command code
-              println!("{}", argument);
+              println!("{:#?}", args);
             }
           }
           Ok(())
